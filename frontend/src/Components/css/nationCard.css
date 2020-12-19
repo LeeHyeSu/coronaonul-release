@@ -1,0 +1,33 @@
+.card__title {
+  position: absolute;
+  font-weight: 600;
+  padding: 10px 0 0 10px;
+  color: #040317;
+  cursor: pointer;
+}
+
+.card__figure {
+  position: relative;
+  top: 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+#nationFigure {
+  font-size: 1.2em;
+}
+
+.card__bottom {
+  display: flex;
+  justify-content: space-around;
+}
+
+.figure-title {
+  color: black;
+  font-size: 0.9em;
+}
+
+.figure-num {
+  font-weight: 600;
+  font-size: 1.1em;
+}

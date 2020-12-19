@@ -1,0 +1,142 @@
+.btnModal {
+  display: none;
+  padding: 10px;
+  background-color: #1a1053;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.Overlay {
+  background-color: rgba(0, 0, 0, 0.55);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  display: none;
+  z-index: 5;
+}
+
+.Overlay.Show {
+  display: block;
+}
+
+.Modal {
+  position: fixed;
+  top: 0;
+  right: -200vh;
+  background-color: #1a1053;
+  color: #fff;
+  width: 30%;
+  height: 100%;
+  box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 0 12px 12px;
+  transition: all 0.3s ease-out;
+  z-index: 10;
+}
+
+.Modal.Show {
+  right: 0;
+}
+
+.btnClose {
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  background-color: transparent;
+  border: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.modalTitle {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  /* background-color: olivedrab; */
+}
+
+.modalText {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal-nav__date {
+  position: relative;
+  top: 50px;
+  left: 12px;
+}
+
+.modal-nav__city {
+  position: relative;
+  top: 70px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-nav__lists {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+}
+
+.modal-nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0;
+  padding: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  z-index: 10;
+  width: 100%;
+  height: 70px;
+}
+
+.modal-nav__list .nav-icon {
+  position: relative;
+  margin: 8px;
+}
+
+.modal-nav__list:hover {
+  background-color: #f1f3fb;
+  opacity: 0.7;
+  color: #1a1053;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.modal-nav__list:hover .nav-icon {
+  color: #1a1053;
+}
+
+.modal-nav__footer {
+  position: absolute;
+  top: 715px;
+  font-size: 13px;
+  margin: 0 10px;
+}
+
+/* 320px ~ 767px (대부분의 스마트폰 모바일 기기(세로)) */
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .btnModal {
+    display: inline;
+    position: absolute;
+    right: 5px;
+    top: 11px;
+  }
+}
