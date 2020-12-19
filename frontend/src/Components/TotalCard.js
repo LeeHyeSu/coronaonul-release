@@ -15,7 +15,7 @@ export default () => {
 
   const getData = () => {
     axios
-      .get("http://localhost:8080/coronaonul")
+      .get("http://3.35.93.61:8080/coronaonul")
       .then(({ data }) => {
         loading(data);
       })
@@ -24,7 +24,7 @@ export default () => {
 
   const getTotalData = () => {
     axios
-      .get("http://localhost:8080/coronaonul/Total")
+      .get("http://3.35.93.61:8080/coronaonul/Total")
       .then(({ data }) => {
         setTotalData(data.weekData);
       })

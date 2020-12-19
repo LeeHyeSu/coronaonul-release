@@ -29,7 +29,7 @@ const Home = () => {
 
   const getFigure = () => {
     axios
-      .get("http://localhost:8080/coronaonul")
+      .get("http://3.35.93.61:8080/coronaonul")
       .then(({ data }) => {
         loading(data);
       })

@@ -18,7 +18,7 @@ function Detail() {
 
   const getNationData = () => {
     axios
-      .get(`http://localhost:8080/coronaonul/${gubunEn}`)
+      .get(`http://3.35.93.61:8080/coronaonul/${gubunEn}`)
       .then(({ data }) => {
         setNationData(data.sidoInfState);
       })
@@ -27,7 +27,7 @@ function Detail() {
 
   const getWeekData = () => {
     axios
-      .get(`http://localhost:8080/coronaonul/${gubunEn}`)
+      .get(`http://3.35.93.61:8080/coronaonul/${gubunEn}`)
       .then(({ data }) => {
         setWeekData(data.weekData);
       })
