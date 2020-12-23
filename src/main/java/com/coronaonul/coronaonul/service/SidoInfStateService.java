@@ -46,6 +46,7 @@ public class SidoInfStateService {
         if (!sidoInfStateList.isEmpty()) {
             System.out.println("from database");
             return sidoInfStateList.stream()
+                    .distinct()
                     .map(SidoInfStateItemDTO::new)
                     .collect(Collectors.toList());
         } else {
@@ -135,11 +136,10 @@ public class SidoInfStateService {
             weekData.add(new NumberByDate(createDt));
         }
 
-        if (weekData.get(0).getNumber() == null) {
-            System.out.println("call open api");
-            try {
-                // 날짜 별로 Open Api 를 호출
-                for (NumberByDate numberByDate : weekData) {
+        for (NumberByDate numberByDate : weekData) {
+            if (numberByDate.getNumber() == null) {
+                System.out.println("call open api");
+                try {
                     URI uri = new URI(sidoInfStateURL + "?serviceKey=" + serviceKey
                             + "&pageNo=1" + "&numOfRows=10"
                             + "&startCreateDt=" + numberByDate.getDate() + "&endCreateDt=" + numberByDate.getDate());
@@ -161,12 +161,13 @@ public class SidoInfStateService {
                             break;
                         }
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
+            }
         }
+
 
         return weekData;
 
