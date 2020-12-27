@@ -29,8 +29,6 @@ public class SidoInfStateService {
     @Value("${sidoInfStateURL}")
     private String sidoInfStateURL;
 
-    private String createDt = new CreateDate().getCreateDt();
-
     private RestTemplate restTemplate = new RestTemplate();
 
     @Transactional
@@ -39,7 +37,7 @@ public class SidoInfStateService {
     }
 
     @Transactional
-    public List<SidoInfStateItemDTO> findByDate() {
+    public List<SidoInfStateItemDTO> findByDate(String createDt) {
 
         List<SidoInfState> sidoInfStateList = sidoInfStateRepository.findByDate(createDt);
 
@@ -51,13 +49,13 @@ public class SidoInfStateService {
                     .collect(Collectors.toList());
         } else {
             System.out.println("call open api");
-            return getItemsFromOpenApi();
+            return getItemsFromOpenApi(createDt);
         }
 
     }
 
     @Transactional
-    public List<SidoInfStateItemDTO> getItemsFromOpenApi() {
+    public List<SidoInfStateItemDTO> getItemsFromOpenApi(String createDt) {
 
         List<SidoInfStateItemDTO> items = new ArrayList<>();
 
@@ -86,7 +84,7 @@ public class SidoInfStateService {
     }
 
     @Transactional
-    public SidoDetails findBySido(String sido) {
+    public SidoDetails findBySido(String sido, String createDt) {
 
         SidoDetails sidoDetails = new SidoDetails();
         List<SidoInfState> sidoInfStateList = sidoInfStateRepository.findByDateAndSido(createDt, sido);
@@ -95,7 +93,7 @@ public class SidoInfStateService {
             sidoDetails.setSidoInfState(new SidoInfStateItemDTO(sidoInfStateList.get(0)));
         } else {
             System.out.println("call open api");
-            List<SidoInfStateItemDTO> items = getItemsFromOpenApi();
+            List<SidoInfStateItemDTO> items = getItemsFromOpenApi(createDt);
 
             for (SidoInfStateItemDTO item : items) {
                 if (item.getGubunEn().equals(sido)) {
@@ -104,13 +102,13 @@ public class SidoInfStateService {
             }
         }
 
-        sidoDetails.setWeekData(getWeekData(sido));
+        sidoDetails.setWeekData(getWeekData(sido, createDt));
 
         return sidoDetails;
     }
 
     @Transactional
-    public List<NumberByDate> getWeekData(String sido) {
+    public List<NumberByDate> getWeekData(String sido, String createDt) {
 
         List<NumberByDate> weekData = new ArrayList<>();
 
