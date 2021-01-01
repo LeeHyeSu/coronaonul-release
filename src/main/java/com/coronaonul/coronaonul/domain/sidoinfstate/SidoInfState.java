@@ -4,23 +4,21 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
 @Entity
+@IdClass(SidoInfStatePK.class)
 public class SidoInfState {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String stdDay;          // 기준일자
-    private String gubun;           // 시도명(한글)
+
+    @Id
     private String gubunEn;         // 시도명(영어)
+
+    private String gubun;           // 시도명(한글)
     private String deathCnt;        // 사망자 수
     private String defCnt;          // 누적 확진자 수
     private String incDec;          // 전일대비 증감 수(오늘 확진자수)

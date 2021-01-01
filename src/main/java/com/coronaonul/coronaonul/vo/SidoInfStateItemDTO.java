@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="item")
 public class SidoInfStateItemDTO {
 
+    private String stdDay;          // 기준일자
     private String deathCnt;        // 사망자 수
     private String defCnt;          // 누적 확진자 수
     private String gubun;           // 시도명(한글)
@@ -21,7 +22,6 @@ public class SidoInfStateItemDTO {
     private String isolIngCnt;      // 격리중 환자수
     private String localOccCnt;     // 지역발생 수
     private String overFlowCnt;     // 해외유입 수
-    private String stdDay;          // 기준일자
 
     @Builder
     public SidoInfStateItemDTO(String stdDay, String deathCnt, String defCnt, String gubun, String gubunEn, String incDec, String isolClearCnt, String isolIngCnt, String localOccCnt, String overFlowCnt) {
