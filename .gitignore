@@ -38,3 +38,6 @@ node_modules/react-slick/
 node_modules/string-convert/
 src/main/resources/static/
 src/main/resources/templates/
+
+### properties file ###
+application.properties
